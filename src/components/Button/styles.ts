@@ -8,6 +8,17 @@ export const Container = styled.TouchableOpacity`
     margin-top: 10px;
     `
 
+
+export const CicularContainer = styled.TouchableOpacity`
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    `
+
+
+
 export const Title = styled.Text`
   font-size: 14px;
 `;

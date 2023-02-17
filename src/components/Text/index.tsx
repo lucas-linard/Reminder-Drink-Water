@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
-import { Text } from './styles';
+import { Text, TextProps } from './styles';
 
-type Props = {
+interface Props extends TextProps {
     children?: ReactNode;
+    style?: any;
   };
 
 
-export default function TextComponent({ children} : Props) {
-    return <Text>{children}</Text>;   
+export default function TextComponent({style,  children, ...rest} : Props) {
+    return <Text style={style} {...rest}>{children}</Text>;
 }
