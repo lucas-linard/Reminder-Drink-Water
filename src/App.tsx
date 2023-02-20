@@ -1,9 +1,12 @@
 import React from "react";
-import Home from "./screens/home";
-import Onboarding from "./screens/onboarding";
+import { Routes } from "./routes";
+
+
+
 export default function App() {
+
   return (
-    <Onboarding />
+      <Routes/>
   );
 }
 
