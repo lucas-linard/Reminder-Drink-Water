@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {TextInput, View} from 'react-native';
 import Button from '../../components/Button';
 import Container from '../../components/Container';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, StackActions } from '@react-navigation/native';
 import { getRealm } from '../../database/realm';
 import uuid from 'react-native-uuid';
 export default function App() {
@@ -14,24 +14,27 @@ export default function App() {
  
  
   async function saveUser() {
-    const realm = await getRealm();
+    //const realm = await getRealm();
 
     try {
-      realm.write(() => {
-        realm.create('User', {
-          _id: uuid.v4(),
-          gender: routeParams.gender,
-          weight: routeParams.weight,
-          unit: routeParams.unit,
-          wakeUpTime: routeParams.wakeUpTime,
-          sleepTime: text,
-        })
-      })
-      console.log("Realm file is located at: " + realm.path);
+      // realm.write(() => {
+      //   realm.create('User', {
+      //     _id: uuid.v4(),
+      //     gender: routeParams.gender,
+      //     weight: routeParams.weight,
+      //     unit: routeParams.unit,
+      //     wakeUpTime: routeParams.wakeUpTime,
+      //     sleepTime: text,
+      //   })
+      // })
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'tab' }],
+      });
     } catch (error) {
       console.error(error)
     } finally {
-      realm.close()
+      //realm.close()
     }
   }
    

@@ -17,6 +17,7 @@ export declare global {
                 wakeUpTime: string;
                 sleepTime: string;
             };
+            tab: undefined;
         }
     }
 }
