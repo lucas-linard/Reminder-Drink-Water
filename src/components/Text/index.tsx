@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
+import { TextStyle } from 'react-native';
 import { Text, TextProps } from './styles';
 
 interface Props extends TextProps {
     children?: ReactNode;
-    style?: any;
+    style?: TextStyle;
   };
 
 

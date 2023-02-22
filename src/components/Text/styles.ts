@@ -9,5 +9,5 @@ export interface TextProps {
 export const Text = styled.Text<TextProps>`
     color: ${props => props.color || '#000'};
     font-weight: ${props => props.fontWeight || 'normal'};
-    font-size: 20px;
+    font-size: 18px;
 `

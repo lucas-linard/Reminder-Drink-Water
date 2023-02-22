@@ -27,6 +27,7 @@ export default function App() {
       //     sleepTime: text,
       //   })
       // })
+      
       navigation.reset({
         index: 0,
         routes: [{ name: 'tab' }],
