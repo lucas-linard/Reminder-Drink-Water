@@ -4,12 +4,11 @@ import { Container , ContainerProps} from "./styles"
 
 interface Props extends ContainerProps {
     children?: ReactNode;
-    style?: ViewStyle;
 }
 
-export default function Box({style,  children, ...rest} : Props) {
+export default function Box({ children, ...rest} : Props) {
     return (
-        <Container style={style} {...rest}>
+        <Container {...rest}>
             {children}
         </Container>
     )
