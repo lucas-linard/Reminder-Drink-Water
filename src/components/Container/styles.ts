@@ -2,8 +2,8 @@ import styled from "styled-components/native";
 
 interface ContainerProps {
     flex?: number;
-    justifyContent?: string;
-    alignItems?: string;
+    justifyContent?: 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
+    alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline';
     backgroundColor?: string;
 }
 

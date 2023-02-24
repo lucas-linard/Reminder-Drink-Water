@@ -8,6 +8,9 @@ export interface ContainerProps {
     alignItems?: "flex-start" | "center" | "flex-end" | "stretch" | "baseline";
     spacingVertical?: number;
     spacing?: number;
+    backgroundColor?: string;
+    height?: string | number;
+    width?: string | number;
 }
 
 export const Container = styled.View<ContainerProps>`  
@@ -18,5 +21,9 @@ export const Container = styled.View<ContainerProps>`
     align-items: ${props => props.alignItems || 'flex-start'};
     margin-top: ${props => props.spacingVertical || 0}px;
     margin-left: ${props => props.spacing || 0}px;
+    background-color: ${props => props.backgroundColor || 'transparent'};
+    height: ${props => props.height || 'auto'};
+    width: ${props => props.width || 'auto'};
+
 
 `

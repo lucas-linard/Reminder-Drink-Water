@@ -10,7 +10,11 @@ export default function App() {
     <ScrollView>
       <Container style={{marginHorizontal: 10, alignItems: 'flex-start'}}>
         {/* CONFIG LEMBRETE */}
-        <Box style={{marginTop: 10, flexDirection: 'row', flexWrap: 'wrap'}}>
+        <Box 
+        spacingVertical={10}
+        flexDirection="row"
+        flexWrap="wrap"
+        >
           <Text color="#808080" fontWeight="bold" width="100%">
             Configurações de lembretes
           </Text>
@@ -22,6 +26,11 @@ export default function App() {
               marginHorizontal: 10,
               marginTop: 10,
             }}
+            backgroundColor="#808080"
+            height={1}
+            width="40%"
+            spacing={10}
+            spacingVertical={10}
           />
         </Box>
 
