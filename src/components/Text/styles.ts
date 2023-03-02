@@ -5,12 +5,14 @@ export interface TextProps {
     fontWeight?: string;
     fontSize?: string;
     width?: string;
+    marginRight?: string;
 }
 
 
 export const Text = styled.Text<TextProps>`
-    color: ${props => props.color || '#000'};
+    color: ${props => props.color || props.theme.COLORS.TEXT};
     font-weight: ${props => props.fontWeight || 'normal'};
-    font-size: ${props => props.fontSize || '16'}px;
-    width: ${props => props.width || 'auto'};
+    font-size: ${props => props.fontSize || props.theme.SIZES.FONT}px;
+    width: ${props => props.width  || 'auto'};
+    margin-right: ${props => props.marginRight || '0'}px;
 `
