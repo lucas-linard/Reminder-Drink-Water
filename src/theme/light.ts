@@ -8,6 +8,9 @@ export default {
         
         TEXT: '#000000',
         TEXT_SECONDARY: '#0D47A1',
+        TEXT_OPTION: '#2196F3',
+        TEXT_MUTED: '#8898AA',
+        
         
         MUTED: '#8898AA',
         INPUT: '#DCDCDC',
