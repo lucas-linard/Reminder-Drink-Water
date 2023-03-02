@@ -1,11 +1,11 @@
 import React from "react";
-import { Container } from "./styles"
-
-interface ContainerProps {
+import { Container, ContainerProps } from "./styles"
+import { ViewProps } from "react-native";
+type ContainerProp = ViewProps & ContainerProps & {
     children?: React.ReactNode;
 }
 
-export default ({children, ...rest}: ContainerProps) => {
+export default ({children, style,  ...rest}: ContainerProp) => {
     return (
         <Container {...rest}>
             {children}

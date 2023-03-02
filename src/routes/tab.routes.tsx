@@ -9,7 +9,7 @@ import settings from "../screens/settings";
 
 export function TabRoutes() {
     return (
-      <Navigator screenOptions={{headerShown: false}}>
+      <Navigator initialRouteName='settings' screenOptions={{headerShown: false}}>
         <Screen name="home" component={home} />
         <Screen name="settings" component={settings} />
       </Navigator>
