@@ -5,8 +5,10 @@ export default {
         SECONDARY: '#81C784',
 
         ACCENT: '#1976D2',
+        
         TEXT: '#000000',
         TEXT_SECONDARY: '#0D47A1',
+        
         MUTED: '#8898AA',
         INPUT: '#DCDCDC',
         INPUT_SUCCESS: '#7BDEB2',
@@ -14,5 +16,10 @@ export default {
         ACTIVE: '#5E72E4',
       
         PLACEHOLDER: '#9FA5AA',
+    },
+    SIZES: {
+        BASE: 8,
+        FONT: 16,
+        OPACITY: 0.8,
     }
 }
