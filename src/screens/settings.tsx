@@ -3,209 +3,204 @@ import Container from '../components/Container';
 import Box from '../components/Box';
 import Text from '../components/Text';
 import Button from '../components/Button';
-import {ScrollView} from 'react-native';
+import { SectionList, SectionListData , Dimensions } from 'react-native';
+
+
+type MenuData = {
+    title: string;
+    value: string;
+    action: () => void;
+}
+
+type MenuHeader = {
+  id: number;
+  title: string;
+}
+
+type Section = SectionListData<MenuData,MenuHeader>
+
+
+
+
+
+
+const Menu: Section[]  = [
+  {
+    id: 1,
+    title: 'Configurações de lembretes',
+    data: [
+      {
+        title: 'Agenda de lembretes',
+        value: '',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Modo de lembrete',
+        value: 'Vibrar',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Usuário',
+    data: [
+      {
+        title: 'Sexo',
+        value: 'Masculino',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Peso',
+        value: '80 kgs',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Idioma',
+        value: 'Padrão',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Geral',
+    data: [
+      {
+        title: 'Unidade',
+        value: 'kg, ml',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Meta de hidratação',
+        value: '2200ml',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Idioma',
+        value: 'Padrão',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Hora de acordar',
+        value: 'Padrão',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Hora de dormir',
+        value: 'Padrão',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Outro',
+    data: [
+      {
+        title: 'Remover anúncios',
+        value: '',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Ajuda',
+        value: '',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Redefinir dados',
+        value: '',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+      {
+        title: 'Politica de privacidade',
+        value: 'Padrão',
+        action: () => {
+          console.log('Lembrete de água');
+        },
+      },
+    ],
+  },
+];
+
+const { width, height } = Dimensions.get('window');
+
 
 export default function App() {
-  return (
-    <ScrollView>
-      <Container style={{marginHorizontal: 10, alignItems: 'flex-start'}}>
-        {/* CONFIG LEMBRETE */}
-        <Box 
+  const renderSectionHeader = (info: {section: Section}) => (
+    <Box
+      spacingVertical={30}
+      flexDirection="column"
+      flexWrap="wrap"
+      width="100%"
+      >
+  
+      <Text type='secondary' fontWeight="bold" width="100%">
+        {info.section.title}
+      </Text>
+      <Box
+        backgroundColor="#808080"
+        height={'1px'}
+        width="100%"
         spacingVertical={10}
-        flexDirection="row"
-        flexWrap="wrap"
+      />
+    </Box>
+  );
+
+  const renderItem = (info: {item: MenuData}) => {
+    return (
+     
+        <Button
+          justifyContent="space-between"
+          width={`${width * 0.9}px`}
+          flexDirection="row"
+          marginTop={10}
+          onPress={() => info.item.action()}
+          >
+          <Text>{info.item.title}</Text>
+          <Text type='option'>{info.item.value}</Text>
+        </Button>
+   
+    );
+  };
+
+  return (
+    <Container
+    justifyContent="flex-start"
+    alignItems="center"
+    marginHorizontal={10}
         >
-          <Text color="#808080" fontWeight="bold" width="100%">
-            Configurações de lembretes
-          </Text>
-          <Box
-            style={{
-              backgroundColor: '#808080',
-              height: 1,
-              width: '40%',
-              marginHorizontal: 10,
-              marginTop: 10,
-            }}
-            backgroundColor="#808080"
-            height={1}
-            width="40%"
-            spacing={10}
-            spacingVertical={10}
-          />
-        </Box>
-
-        <Button style={{justifyContent: 'flex-start', marginVertical: 10}}>
-          <Text>Agenda de lembretes</Text>
-        </Button>
-
-        <Button style={{justifyContent: 'flex-start', marginVertical: 10}}>
-          <Text>Modo do lembrete</Text>
-        </Button>
-        {/* GERAL */}
-        <Box style={{marginTop: 10, flexDirection: 'row', flexWrap: 'wrap'}}>
-          <Text style={{color: '#808080', fontWeight: 'bold', width: '100%'}}>
-            Geral
-          </Text>
-          <Box
-            style={{
-              backgroundColor: '#808080',
-              height: 1,
-              width: '40%',
-              marginHorizontal: 10,
-              marginTop: 10,
-            }}
-          />
-        </Box>
-
-        <Button style={{justifyContent: 'flex-start', marginVertical: 10}}>
-          <Text>Remover anúncios</Text>
-        </Button>
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Unidade</Text>
-          <Text style={{color: '#95b1e3'}}>kg, ml</Text>
-        </Button>
-
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Meta de consumo</Text>
-          <Text style={{color: '#95b1e3'}}>2200 ml</Text>
-        </Button>
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>idioma</Text>
-          <Text style={{color: '#95b1e3'}}>Padrão</Text>
-        </Button>
-
-        {/* USUARIO */}
-        <Box style={{marginTop: 10, flexDirection: 'row', flexWrap: 'wrap'}}>
-          <Text style={{color: '#808080', fontWeight: 'bold', width: '100%'}}>
-            Dados Pessoais
-          </Text>
-          <Box
-            style={{
-              backgroundColor: '#808080',
-              height: 1,
-              width: '40%',
-              marginHorizontal: 10,
-              marginTop: 10,
-            }}
-          />
-        </Box>
-
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Sexo</Text>
-          <Text style={{color: '#95b1e3'}}>Masculino</Text>
-        </Button>
-
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Peso</Text>
-          <Text style={{color: '#95b1e3'}}>83 kg</Text>
-        </Button>
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Hora de acordar</Text>
-          <Text style={{color: '#95b1e3'}}> 6:00</Text>
-        </Button>
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>idioma</Text>
-          <Text style={{color: '#95b1e3'}}>22:00</Text>
-        </Button>
-
-        {/* Outro */}
-        <Box style={{marginTop: 10, flexDirection: 'row', flexWrap: 'wrap'}}>
-          <Text style={{color: '#808080', fontWeight: 'bold', width: '100%'}}>
-            Outro
-          </Text>
-          <Box
-            style={{
-              backgroundColor: '#808080',
-              height: 1,
-              width: '40%',
-              marginHorizontal: 10,
-              marginTop: 10,
-            }}
-          />
-        </Box>
-
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Sexo</Text>
-        </Button>
-
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Redefinir Dados</Text>
-          <Text style={{color: '#95b1e3'}}>83 kg</Text>
-        </Button>
-
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Fale conosco</Text>
-        </Button>
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            marginVertical: 10,
-          }}>
-          <Text>Políticas de privacidade</Text>
-        </Button>
-      </Container>
-    </ScrollView>
+    <SectionList
+      sections={Menu}
+      stickySectionHeadersEnabled={false}
+      renderItem={renderItem}
+      renderSectionHeader={renderSectionHeader}></SectionList>
+  </Container>
   );
 }
