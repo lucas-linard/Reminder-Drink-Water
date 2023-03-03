@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled , {css} from "styled-components/native";
 
 export interface ContainerProps {
     flex?: number;
@@ -14,7 +14,7 @@ export interface ContainerProps {
 }
 
 export const Container = styled.View<ContainerProps>`  
-    flex: ${props => props.flex || 0};
+    ${props => props.flex && css`flex: ${props.flex};`}
     flex-wrap: ${props => props.flexWrap || 'nowrap'};
     flex-direction: ${props => props.flexDirection || 'column'};
     justify-content: ${props => props.justifyContent || 'flex-start'};
